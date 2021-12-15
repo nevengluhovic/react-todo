@@ -9,8 +9,12 @@ const Form = ({ setInputText, inputText, todos, setTodos, setStatus }) => {
 
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    setTodos([...todos, { text: inputText, completed: false, id: uuidv4() }]);
-    setInputText("");
+    if (inputText.length === 0) {
+      alert("You can not add empty Todo!");
+    } else {
+      setTodos([...todos, { text: inputText, completed: false, id: uuidv4() }]);
+      setInputText("");
+    }
   };
 
   const selectHandler = (e) => {
